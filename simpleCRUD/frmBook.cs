@@ -171,7 +171,102 @@ namespace simpleCRUD
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (txtTitle.Text == "")
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Debe escribir el titulo", "VALIDACION",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtTitle.Focus(); //enviamos el enfoque a la caja de texto
+                
+            }
+            else
+            {
 
+                Book book = new Book(); //instancia de la clase Libro
+                                        //evaluar la accion
+                if (action == "edit")
+                {
+                    book._bookId = Convert.ToInt32(txtId.Text);
+                }
+
+
+                book._title = txtTitle.Text;
+                book._subtitle = txtSubTitle.Text;
+                book._publishedDate = dtPublishedDate.Text;
+                book._ISBN = txtISBN.Text;
+
+                string mensaje = "Esta seguro que desea guardar el registro?";
+                if (MetroFramework.MetroMessageBox.Show(this, mensaje, "CONFIRMACION",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    //LLAMAR AL METODO PARA GUARDAR
+                    if (book.newEditBook(action))
+                    {
+                        MetroFramework.MetroMessageBox.Show(this, "Los datos se han guardado exitosamente!",
+                            "CONFIRMACION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MetroFramework.MetroMessageBox.Show(this, "Los datos  no se han guardado!",
+                            "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    clearControls();
+                    controlsDisable();
+                    fillDataGridView();
+                    tabs.TabPages.Remove(tabForm);
+                    tabs.TabPages.Add(tabData);
+                    tabs.TabPages[0].Text = "BOOK LIST";
+                }
+            }
+        }
+
+        private void edit_Click(object sender, EventArgs e)
+        {
+            tabs.TabPages.Remove(tabData);
+            tabs.TabPages.Add(tabForm);
+            tabs.TabPages[0].Text = "EDIT BOOK";
+            controlsEnable();
+
+            txtId.Visible = true;
+            txtId.ReadOnly = true;
+            lblId.Visible = true;
+
+            //pasar los valores del datagridview hacia los texbox
+            txtId.Text = dtgBooks.CurrentRow.Cells[0].Value.ToString();
+            txtTitle.Text = dtgBooks.CurrentRow.Cells[1].Value.ToString();
+            txtSubTitle.Text = dtgBooks.CurrentRow.Cells[2].Value.ToString();
+            txtISBN.Text = dtgBooks.CurrentRow.Cells[3].Value.ToString();
+            dtPublishedDate.Text = dtgBooks.CurrentRow.Cells[4].Value.ToString();
+
+            //enviar aaccion
+            action = "edit";
+        }
+
+        private void delete_Click(object sender, EventArgs e)
+        {
+            string mensaje = "Esta seguro que desea eliminar el registro?";
+            if (MetroFramework.MetroMessageBox.Show(this, mensaje, "CONFIRMACION",
+               MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                Book book = new Book();
+                book._bookId = Convert.ToInt32(dtgBooks.CurrentRow.Cells[0].Value);
+
+                //llamado al metodo deleteBook() de la clase Book
+                if (book.deleteBook())
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Los datos se han eliminado exitosamente!",
+                        "CONFIRMACION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    //actualizar datagridview
+                    fillDataGridView();
+
+                }
+                else
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Los datos  no se han podido eliminar",
+                        "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 

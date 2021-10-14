@@ -30,8 +30,8 @@ namespace simpleCRUD
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.txtISBN = new System.Windows.Forms.MaskedTextBox();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
@@ -279,14 +279,14 @@ namespace simpleCRUD
             this.dtgBooks.BackgroundColor = System.Drawing.Color.White;
             this.dtgBooks.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgBooks.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgBooks.ContextMenuStrip = this.actions;
             this.dtgBooks.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -294,8 +294,8 @@ namespace simpleCRUD
             this.dtgBooks.MultiSelect = false;
             this.dtgBooks.Name = "dtgBooks";
             this.dtgBooks.ReadOnly = true;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtgBooks.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtgBooks.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgBooks.Size = new System.Drawing.Size(772, 263);
             this.dtgBooks.TabIndex = 32;
@@ -325,18 +325,20 @@ namespace simpleCRUD
             this.edit.AutoToolTip = true;
             this.edit.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.edit.Name = "edit";
-            this.edit.Size = new System.Drawing.Size(92, 24);
+            this.edit.Size = new System.Drawing.Size(155, 24);
             this.edit.Text = "Edit";
             this.edit.ToolTipText = "Edit Book";
+            this.edit.Click += new System.EventHandler(this.edit_Click);
             // 
             // delete
             // 
             this.delete.AutoToolTip = true;
             this.delete.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.delete.Name = "delete";
-            this.delete.Size = new System.Drawing.Size(92, 24);
+            this.delete.Size = new System.Drawing.Size(155, 24);
             this.delete.Text = "Delete";
             this.delete.ToolTipText = "Delete Book";
+            this.delete.Click += new System.EventHandler(this.delete_Click);
             // 
             // btnCancel
             // 
